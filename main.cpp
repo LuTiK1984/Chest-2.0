@@ -49,16 +49,14 @@ void Game()
         CheckPlayerChests(handPlayer, ChestCountPlayer, sizePlayer);
         CheckPlayerChests(handBot, ChestCountBot, sizeBot);
         
-        printf("\n\nКоличество ваших сундучков: %i", ChestCountPlayer);
-        printf("\n\nКоличество сундучков противника: %i\n", ChestCountBot);
+        printf("Количество ваших сундучков: %i", ChestCountPlayer);
+        printf("\nКоличество сундучков противника: %i\n", ChestCountBot);
 
 
 
         printf("\nКоличество карт в колоде - %i", sizeMain);
-        printf("\nВаши карты - %i и карты врага - %i: \n\n", sizePlayer, sizeBot);
+        printf("\n\nВаши карты: \n\n");
         PrintHand(handPlayer, sizePlayer);
-        printf("\n");
-        PrintHand(handBot, sizeBot);
         printf("\n");
 
         int choice;
@@ -81,6 +79,11 @@ void Game()
                 printf("\nВы угадали и забераете у противника карту(ы)!\n");
                 ReturnAllCardsByRank(handPlayer, handBot, choice, sizeBot, sizePlayer);
                 sortDeck(handPlayer, sizePlayer);
+                
+                printf("\n\nДля продолжения нажмите Enter...");
+                system("pause");
+                Continue();
+                Clear();
             }
 
             else
@@ -99,12 +102,16 @@ void Game()
                     }
                 }
                 MyTurn = 0;
+                
+                printf("\n\nДля продолжения нажмите Enter...");
+                Continue();
+                Clear();
             }
         }
 
         else
         {
-            printf("\n\nХод противника! \nПротивник выбирает карту! ");
+            printf("\n\nХод противника! \n\nПротивник выбирает карту! ");
             choice = ReturnBenefitValues(handBot, sizeBot);
             printf("Противник выбрал карту номиналом ");
             PrintRankName(choice);
@@ -116,6 +123,9 @@ void Game()
                 printf("Противник угадал и заберает у вас карту(ы)!\n");
                 ReturnAllCardsByRank(handBot, handPlayer, choice, sizePlayer, sizeBot);
                 sortDeck(handBot, sizeBot);
+                printf("\n\nДля продолжения нажмите Enter...");
+                Continue();
+                Clear();
             }
             else
             {
@@ -131,14 +141,14 @@ void Game()
                         CardDistribution(handPlayer, Deck, sizeMain, sizePlayer, 1);
                     }
                 }
+                printf("\n\nДля продолжения нажмите Enter...");
+                Continue();
+                Clear();
                 MyTurn = 1;
-            }
-        
-            /*printf("\n\nДля продолжения нажмите Enter...");
-            Continue();
-            Clear();*/
-        
-            if (GameOver())
+            } 
+        }
+            
+        if (GameOver())
             {
                 Clear();
                 printf("\n\n\n                                            Игра Окончена!\n\n\n");
@@ -157,8 +167,6 @@ void Game()
                 }
                 Continue();
             }
-        }
-
 
     }
 
