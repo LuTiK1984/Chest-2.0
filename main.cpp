@@ -76,11 +76,11 @@ void Game()
 
             if (turnindex >= 0)
             {
-                printf("\nВы угадали и забераете у противника карту(ы)!\n");
+                printf("\nВы угадали и забераете у противника карту(ы)!\n\n");
                 ReturnAllCardsByRank(handPlayer, handBot, choice, sizeBot, sizePlayer);
                 sortDeck(handPlayer, sizePlayer);
                 
-                printf("\n\nДля продолжения нажмите Enter...");
+                
                 system("pause");
                 Continue();
                 Clear();
@@ -93,7 +93,7 @@ void Game()
                 PrintCardName(Deck[sizeMain - 1]);
                 CardDistribution(handPlayer, Deck, sizeMain, sizePlayer, 1);
 
-                printf("Противник добирает карты из колоды при необходимости.\n");
+                printf("Противник добирает карты из колоды при необходимости.\n\n");
                 if (sizeBot < 4)
                 {
                     for (int i = sizeBot; i < 4; i++)
@@ -103,7 +103,7 @@ void Game()
                 }
                 MyTurn = 0;
                 
-                printf("\n\nДля продолжения нажмите Enter...");
+                system("pause");
                 Continue();
                 Clear();
             }
